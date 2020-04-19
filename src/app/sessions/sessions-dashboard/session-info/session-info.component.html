@@ -1,0 +1,11 @@
+<div class="session-container">
+    <div class="session-header">
+        <h1 class="session-name">
+            {{session.title}}
+        </h1>
+        <h2 class="speaker-name">{{speaker.name}}</h2>
+        <small>{{session.day | date: 'EEEE'}}, {{session.startTime.hours}}:{{session.startTime.minutes}} -
+            {{session.endTime.hours}}:{{session.endTime.minutes}}</small>
+        <p>{{session.description}}</p>
+    </div>
+</div>

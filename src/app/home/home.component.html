@@ -1,0 +1,22 @@
+<div>
+    <div class="image-text-container" routerLink="/speakers" (mouseenter)="animateSpeakers(true)"
+        (mouseleave)="animateSpeakers(false)">
+        <span class="image-container">
+            <img [src]="speakersImage" height="300" width="600" alt="Speakers"
+                [@showHide]="showSpeakers ? 'hide' : 'show'">
+        </span>
+        <div class="image-text" [@showHide]="showSpeakers ? 'show' : 'hide'">
+            <h1>Speakers</h1>
+        </div>
+    </div>
+    <div class="image-text-container" routerLink="/sessions" (mouseenter)="animateSessions(true)"
+        (mouseleave)="animateSessions(false)">
+        <span class="image-container">
+            <img class="image" [src]="sessionsImage" height="300" width="600" alt="Sessions"
+                [@showHide]="showSessions ? 'hide' : 'show'">
+        </span>
+        <div class="image-text" [@showHide]="showSessions ? 'show' : 'hide'">
+            <h1>Sessions</h1>
+        </div>
+    </div>
+</div>

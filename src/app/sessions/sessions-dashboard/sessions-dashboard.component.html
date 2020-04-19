@@ -1,0 +1,10 @@
+<form>
+    <label for="session-filter">Filter </label>
+    <input type="text" name="session-filter" [(ngModel)]="filterString" (keyup)="filterSessions()">
+    <button (click)="clearFilter()">Clear</button>
+</form>
+<ul>
+    <li *ngFor="let session of filteredSessions">
+        <app-session-info [session]="session" [speaker]="findSpeaker(session.speakerId)"></app-session-info>
+    </li>
+</ul>
