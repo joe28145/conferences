@@ -5,8 +5,6 @@ import * as fromSpeaker from './reducers/speaker.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SpeakerEffects } from './effects/speaker.effects';
 
-
-
 @NgModule({
   declarations: [],
   imports: [

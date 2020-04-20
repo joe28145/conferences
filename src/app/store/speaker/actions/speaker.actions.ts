@@ -4,7 +4,9 @@ import { Speaker } from 'src/app/shared/models/speaker.model';
 export enum SpeakerActionTypes {
   LoadSpeakers = '[Speaker] Load Speakers',
   LoadSpeakersSuccess = '[Speaker] Load Speakers Success',
-  LoadSpeakersFailure = '[Speaker] Load Speakers Failure'
+  LoadSpeakersFailure = '[Speaker] Load Speakers Failure',
+  SelectSpeaker = '[Speaker] Select Speaker',
+  DeselectSpeaker= '[Speaker] Deselect Speaker'
 }
 
 export class LoadSpeakers implements Action {
@@ -23,10 +25,22 @@ export class LoadSpeakersFailure implements Action {
   constructor(public error: Error){}
 }
 
+export class SelectSpeaker implements Action {
+  readonly type = SpeakerActionTypes.SelectSpeaker;
+
+  constructor(public id: string){}
+}
+
+export class DeselectSpeaker implements Action {
+  readonly type = SpeakerActionTypes.DeselectSpeaker;
+}
+
 export type SpeakerActions = 
 LoadSpeakers
 | LoadSpeakersSuccess
-| LoadSpeakersFailure;
+| LoadSpeakersFailure
+| SelectSpeaker
+| DeselectSpeaker;
 
 
 
