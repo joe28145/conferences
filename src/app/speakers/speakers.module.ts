@@ -4,6 +4,7 @@ import { SpeakersComponent } from './speakers.component';
 import { SpeakersDashboardComponent } from './speakers-dashboard/speakers-dashboard.component';
 import { RouterModule } from '@angular/router';
 import { SpeakerInfoComponent } from './speakers-dashboard/speaker-info/speaker-info.component';
+import { AppStoreModule } from '../store/app-store.module';
 
 const speakersRoutes = [
   {path: '', component: SpeakersComponent}
@@ -13,7 +14,8 @@ const speakersRoutes = [
   declarations: [SpeakersComponent, SpeakersDashboardComponent, SpeakerInfoComponent],
   imports: [
     RouterModule.forChild(speakersRoutes),
-    CommonModule
+    CommonModule,
+    AppStoreModule
   ],
   exports: []
 })
