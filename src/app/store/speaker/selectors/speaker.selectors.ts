@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import * as fromSpeaker from '../reducers/speaker.reducer';
 import * as _ from 'lodash';
 

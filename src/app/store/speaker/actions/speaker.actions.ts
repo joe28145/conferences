@@ -3,6 +3,7 @@ import { Speaker } from 'src/app/shared/models/speaker.model';
 
 export enum SpeakerActionTypes {
   LoadSpeakers = '[Speaker] Load Speakers',
+  ReloadSpeakers = '[Speaker] Reload Speakers',
   LoadSpeakersSuccess = '[Speaker] Load Speakers Success',
   LoadSpeakersFailure = '[Speaker] Load Speakers Failure',
   SelectSpeaker = '[Speaker] Select Speaker',
@@ -11,6 +12,10 @@ export enum SpeakerActionTypes {
 
 export class LoadSpeakers implements Action {
   readonly type = SpeakerActionTypes.LoadSpeakers;
+}
+
+export class ReloadSpeakers implements Action {
+  readonly type = SpeakerActionTypes.ReloadSpeakers;
 }
 
 export class LoadSpeakersSuccess implements Action {
@@ -37,6 +42,7 @@ export class DeselectSpeaker implements Action {
 
 export type SpeakerActions = 
 LoadSpeakers
+| ReloadSpeakers
 | LoadSpeakersSuccess
 | LoadSpeakersFailure
 | SelectSpeaker

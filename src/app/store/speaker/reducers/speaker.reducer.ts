@@ -26,7 +26,7 @@ export function reducer(state: State = initialSpeakerState, action: SpeakerActio
   switch (action.type) {
 
     // Load Speakers
-    case SpeakerActionTypes.LoadSpeakers: {
+    case SpeakerActionTypes.LoadSpeakers || SpeakerActionTypes.ReloadSpeakers: {
       return {
         ...state,
         status: {

@@ -21,6 +21,9 @@ export class SpeakersComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadSpeakers());
+    // this.speakers$ = this.store.pipe(select());
+    // this.speakersStatus$ = this.store.pipe(select(this.speakerSelectorService.getSpeakersStatus));
+  
     this.speakers$ = this.store.pipe(select(SpeakerSelectors.getSpeakers));
     this.speakersStatus$ = this.store.pipe(select(SpeakerSelectors.getSpeakersStatus));
   }
