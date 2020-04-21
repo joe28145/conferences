@@ -1,23 +1,91 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import * as SessionActions from '../actions/session.actions';
+import { SessionActions, SessionActionTypes } from '../actions/session.actions';
+import { Status } from 'src/app/shared/models/status.model';
+import * as _ from 'lodash';
+import { Session } from 'src/app/shared/models/session.model';
 
 export const sessionFeatureKey = 'session';
 
 export interface State {
-
+  sessions: Session[];
+  currentSessionId: string;
+  status: Status
 }
 
-export const initialState: State = {
-
+export const intitialSessionState: State = {
+  sessions: [],
+  currentSessionId: null,
+  status: {
+    loading: false,
+    valid: false,
+    failed: false,
+    error: null
+  }
 };
 
+export function reducer(state: State = intitialSessionState, action: SessionActions): State {
+  switch (action.type) {
 
-export const reducer = createReducer(
-  initialState,
+    // Load Sessions
+    case SessionActionTypes.LoadSessions || SessionActionTypes.ReloadSessions: {
+      return {
+        ...state,
+        status: {
+          ...state.status,
+          loading: true
+        }
+      }
+    }
 
-  on(SessionActions.loadSessions, state => state),
-  on(SessionActions.loadSessionsSuccess, (state, action) => state),
-  on(SessionActions.loadSessionsFailure, (state, action) => state),
+    // Load Sessions Success
+    case SessionActionTypes.LoadSessionsSuccess: {
+      return {
+        ...state,
+        sessions: _.cloneDeep(action.sessions),
+        status: {
+          loading: false,
+          valid: true,
+          failed: false,
+          error: null
+        }
+      }
+    }
 
-);
+    // Load Sessions Failure
+    case SessionActionTypes.LoadSessionsFailure: {
+      return {
+        ...state,
+        sessions: [],
+        status: {
+          loading: false,
+          valid: false,
+          failed: true,
+          error: _.cloneDeep(action.error)
+        }
+      }
+    }
+
+    // Select Session
+    case SessionActionTypes.SelectSession: {
+      return {
+        ...state,
+        currentSessionId: action.id
+      }
+    }
+
+    // Deselect Session
+    case SessionActionTypes.DeselectSession: {
+      return {
+        ...state,
+        currentSessionId: null
+      }
+    }
+
+    default: {
+      return {
+        ...state
+      }
+    }
+
+  }
+}
 

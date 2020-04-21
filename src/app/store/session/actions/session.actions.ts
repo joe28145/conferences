@@ -1,15 +1,49 @@
-import { createAction, props } from '@ngrx/store';
+import { Action } from '@ngrx/store';
+import { Session } from 'src/app/shared/models/session.model';
 
-export const loadSessions = createAction(
-  '[Session] Load Sessions'
-);
+export enum SessionActionTypes {
+  LoadSessions = '[Session] Load Sessions',
+  ReloadSessions = '[Session] Reload Sessions',
+  LoadSessionsSuccess = '[Session] Load Sessions Success',
+  LoadSessionsFailure = '[Session] Load Sessions Failure',
+  SelectSession = '[Session] Select Session',
+  DeselectSession = '[Session] Deselect Session'
+}
 
-export const loadSessionsSuccess = createAction(
-  '[Session] Load Sessions Success',
-  props<{ data: any }>()
-);
+export class LoadSessions implements Action {
+  readonly type = SessionActionTypes.LoadSessions;
+}
 
-export const loadSessionsFailure = createAction(
-  '[Session] Load Sessions Failure',
-  props<{ error: any }>()
-);
+export class ReloadSessions implements Action {
+  readonly type = SessionActionTypes.ReloadSessions;
+}
+
+export class LoadSessionsSuccess implements Action {
+  readonly type = SessionActionTypes.LoadSessionsSuccess;
+
+  constructor(public sessions: Session[]){}
+}
+
+export class LoadSessionsFailure implements Action {
+  readonly type = SessionActionTypes.LoadSessionsFailure;
+
+  constructor(public error: Error){}
+}
+
+export class SelectSession implements Action {
+  readonly type = SessionActionTypes.SelectSession;
+
+  constructor(public id: string){}
+}
+
+export class DeselectSession implements Action {
+  readonly type = SessionActionTypes.DeselectSession;
+}
+
+export type SessionActions = 
+LoadSessions
+| ReloadSessions
+| LoadSessionsSuccess
+| LoadSessionsFailure
+| SelectSession
+| DeselectSession;

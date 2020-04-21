@@ -1,2 +1,3 @@
-<app-sessions-dashboard [sessions]="$sessions | async" [speakers]="$speakers | async">
+<app-sessions-dashboard [sessions]="sessions$ | async" [sessionsStatus]="sessionsStatus$ | async"
+    [speakers]="speakers$ | async" [speakersStatus]="speakersStatus$">
 </app-sessions-dashboard>

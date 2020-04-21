@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Session } from 'src/app/shared/models/session.model';
 import { Speaker, emptySpeaker } from 'src/app/shared/models/speaker.model';
+import { Status } from 'src/app/shared/models/status.model';
 
 @Component({
   selector: 'app-sessions-dashboard',
@@ -11,6 +12,8 @@ export class SessionsDashboardComponent implements OnInit, OnChanges {
 
   @Input() sessions: Session[];
   @Input() speakers: Speaker[];
+  @Input() sessionsStatus: Status;
+  @Input() speakersStatus: Status;
 
   filteredSessions: Session[];
   filterString: string;
