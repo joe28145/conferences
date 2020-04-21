@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SessionsDashboardComponent } from './sessions-dashboard/sessions-dashboard.component';
 import { SessionInfoComponent } from './sessions-dashboard/session-info/session-info.component';
 import { FormsModule }   from '@angular/forms';
+import { AppStoreModule } from '../store/app-store.module';
 
 const sessionsRoutes = [
   { path: '', component: SessionsComponent }
@@ -15,7 +16,8 @@ const sessionsRoutes = [
   imports: [
     RouterModule.forChild(sessionsRoutes),
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppStoreModule
   ]
 })
 export class SessionsModule { }

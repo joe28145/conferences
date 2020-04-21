@@ -1,5 +1,7 @@
-<ul>
-    <li *ngFor="let speaker of speakers">
-        <app-speaker-info [speaker]="speaker"></app-speaker-info>
-    </li>
-</ul>
+<div *ngIf="!!speakersStatus.valid && !speakersStatus.loading">
+    <ul>
+        <li *ngFor="let speaker of speakers">
+            <app-speaker-info [speaker]="speaker"></app-speaker-info>
+        </li>
+    </ul>
+</div>

@@ -1,1 +1,2 @@
-<app-speakers-dashboard [speakers]="$speakers | async"></app-speakers-dashboard>
+<app-speakers-dashboard [speakers]="speakers$ | async"
+[speakersStatus]="speakersStatus$ | async"></app-speakers-dashboard>

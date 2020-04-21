@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Speaker } from 'src/app/shared/models/speaker.model';
 import { Session } from 'src/app/shared/models/session.model';
@@ -21,10 +21,16 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getSpeakers(): Observable<Speaker[]> {
-    return this.http.get<Speaker[]>(`${environment.speakers.url}`);
+    return this.http.get<Speaker[]>(`${environment.speakers.url}`)
+      .pipe(
+        catchError(error => { throw error })
+      );
   }
 
   getSessions(): Observable<Session[]> {
-    return this.http.get<Session[]>(`${environment.sessions.url}`);
+    return this.http.get<Session[]>(`${environment.sessions.url}`)
+      .pipe(
+        catchError(error => { throw error })
+      );
   }
 }
